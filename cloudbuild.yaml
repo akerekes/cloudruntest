@@ -12,3 +12,7 @@ steps:
   - gcr.io/buildpacks/builder:latest
   - --network
   - cloudbuild
+# Deploy container image to Cloud Run
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: gcloud
+  args: ['run', 'deploy', 'cloudruntest', '--image', 'gcr.io/akerekes-gcf-sandbox/cloudruncd', '--region', 'us-central1']
