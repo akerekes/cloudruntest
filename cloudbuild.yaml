@@ -1,6 +1,4 @@
-build:
-  logs-bucket: 'gs://buildlogs-1qaz'
-
+logsBucket: 'gs://buildlogs-1qaz'
 steps:
 # Build the container image
 - name: 'gcr.io/cloud-builders/docker'
