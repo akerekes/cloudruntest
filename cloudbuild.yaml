@@ -15,4 +15,4 @@ steps:
 # Deploy container image to Cloud Run
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: gcloud
-  args: ['run', 'deploy', 'cloudruntest', '--image', 'gcr.io/akerekes-gcf-sandbox/cloudruncd', '--region', 'us-central1']
+  args: ['run', 'deploy', 'cloudruntest', '--image', 'us-central1-docker.pkg.dev/akerekes-gcf-sandbox/cloudruncd/cloudruncd', '--region', 'us-central1']
