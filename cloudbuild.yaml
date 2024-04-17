@@ -1,14 +1,14 @@
-logsBucket: 'gs://buildlogs-1qaz'
+options:
+  logging: CLOUD_LOGGING_ONLY
+  pool: {}
+projectId: akerekes-gcf-sandbox
 steps:
-# Build the container image
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/akerekes-gcf-sandbox/cloudruncd', '.']
-# Push the container image to Container Registry
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/akerekes-gcf-sandbox/cloudruncd']
-# Deploy container image to Cloud Run
-- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-  entrypoint: gcloud
-  args: ['run', 'deploy', 'cloudruntest', '--image', 'gcr.io/akerekes-gcf-sandbox/cloudruncd', '--region', 'us-central1']
-images:
-- gcr.io/akerekes-gcf-sandbox/cloudruncd
+- name: gcr.io/k8s-skaffold/pack
+  entrypoint: pack
+  args:
+  - build
+  - us-central1-docker.pkg.dev/akerekes-gcf-sandbox/cloudruncd/cloudruncd
+  - --builder
+  - gcr.io/buildpacks/builder:latest
+  - --network
+  - cloudbuild
