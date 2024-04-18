@@ -5,4 +5,4 @@ projectId: akerekes-gcf-sandbox
 steps:
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: gcloud
-  args: ['alpha', 'run', 'deploy', 'cloudruntest', '--region', 'us-central1', '--container', 'main', '--source', '.', '--function', 'helloWorld']
+  args: ['alpha', 'run', 'deploy', 'cloudruntest', '--region', 'us-central1', '--source', '.', '--function', 'helloWorld']
