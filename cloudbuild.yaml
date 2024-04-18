@@ -3,17 +3,6 @@ options:
   pool: {}
 projectId: akerekes-gcf-sandbox
 steps:
-- name: gcr.io/k8s-skaffold/pack
-  entrypoint: pack
-  args:
-  - build
-  - us-central1-docker.pkg.dev/akerekes-gcf-sandbox/cloudruncd/cloudruncd
-  - --builder
-  - gcr.io/buildpacks/builder:latest
-  - --network
-  - cloudbuild
-  - --publish
-# Deploy container image to Cloud Run
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: gcloud
-  args: ['run', 'deploy', 'cloudruntest', '--image', 'us-central1-docker.pkg.dev/akerekes-gcf-sandbox/cloudruncd/cloudruncd', '--region', 'us-central1']
+  args: ['alpha', 'run', 'deploy', 'cloudruntest', '--region', 'us-central1', '--container', 'main', '--source', '.', '--function', 'helloWorld']
